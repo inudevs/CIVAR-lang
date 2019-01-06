@@ -38,14 +38,14 @@ while True:
         elif char == '.':
             if current_state in [State.civar_var, State.dot]:
                 dot_count += 1
-            elif current_state == State.none:
+            elif current_state in [State.ha, State.ah]:
                 current_num += 1
                 continue
 
         elif char == ',':
             if current_state in [State.civar_var, State.comma]:
                 comma_count += 1
-            elif current_state == State.none:
+            elif current_state in [State.ha, State.ah]:
                 current_num -= 1
                 continue
 

@@ -30,6 +30,9 @@ while True:
                       '.' : State.dot,
                       ',' : State.comma}
 
+    final_str = ""
+    current_col = 0
+
     for char in line:
         if (char == '시' and current_state == State.none) or \
            (char == '이' and current_state in [State.civar_c, State.civar_i]) or \
@@ -62,12 +65,17 @@ while True:
 
         elif (char == '하' and current_state == State.none) or \
              (char == '아' and current_state in [State.none, State.ha, State.ah]):
-            print(chr(current_num), end='')
+            final_str += chr(current_num)
 
             civar_count = 0
             dot_count = 0
             comma_count = 0
 
-        current_state = char_state_map[char]
+        else:
+            print("오류! : " + str(current_col + 1) + "열에서 유효하지 않은 문자 발견")
+            exit()
 
-    print()
+        current_state = char_state_map[char]
+        current_col += 1
+
+    print(final_str)

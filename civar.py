@@ -81,8 +81,8 @@ def run_repl():
         print(interpret_civar(line))
 
 def main():
-    parser = argparse.ArgumentParser(description="시바랭 실행기")
-    parser.add_argument("input", nargs='?', help="입력 파일의 경로")
+    parser = argparse.ArgumentParser(description="CIVAR-lang interpreter")
+    parser.add_argument("input", nargs='?', help="Location of an input file")
     args, _ = parser.parse_known_args()
 
     if args.input is not None:

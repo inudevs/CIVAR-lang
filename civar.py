@@ -32,6 +32,7 @@ while True:
 
     final_str = ""
     current_col = 0
+    current_row = 0
 
     for char in line:
         if (char == '시' and current_state == State.none) or \
@@ -71,11 +72,15 @@ while True:
             dot_count = 0
             comma_count = 0
 
+        elif char == '\n':
+            current_col += 1
+            continue
+
         else:
-            print("오류! : " + str(current_col + 1) + "열에서 유효하지 않은 문자 발견")
+            print("오류! : " + str(current_col + 1) + "행 " + str(current_row + 1) + "열에서 유효하지 않은 문자 발견")
             exit()
 
         current_state = char_state_map[char]
-        current_col += 1
+        current_row += 1
 
     print(final_str)

@@ -11,6 +11,7 @@ class State(Enum):
     space = 5
 
 def interpret_civar(line):
+    line = line.replace('\n', ' ')
     parser_exp = re.compile(r'[.]+|[,]+|시이*바|하아*|아+| +')
     parse_result = parser_exp.findall(line)
 

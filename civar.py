@@ -5,8 +5,10 @@ class State(Enum):
     civar_c = 1
     civar_i = 2
     civar_var = 3
-    dot = 4
-    comma = 5
+    ha = 4
+    ah = 5
+    dot = 6
+    comma = 7
 
 while True:
     line = input('>> ').strip()
@@ -23,6 +25,8 @@ while True:
                       '시' : State.civar_c,
                       '이' : State.civar_i,
                       '바' : State.civar_var,
+                      '하' : State.ha,
+                      '아' : State.ah,
                       '.' : State.dot,
                       ',' : State.comma}
 
@@ -54,14 +58,15 @@ while True:
             civar_count = 0
             dot_count = 0
             comma_count = 0
+            current_state = State.none
 
-        elif char in ['하', '아']:
+        elif (char == '하' and current_state == State.none) or \
+             (char == '아' and current_state in [State.none, State.ha, State.ah]):
             print(chr(current_num), end='')
+
             civar_count = 0
             dot_count = 0
             comma_count = 0
-            current_state = State.none
-            continue
 
         current_state = char_state_map[char]
 

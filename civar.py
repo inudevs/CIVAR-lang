@@ -10,11 +10,7 @@ class State(Enum):
     dot = 6
     comma = 7
 
-while True:
-    line = input('>> ').strip()
-    if line == ':quit':
-        break
-    
+def interpret_civar(line):
     current_num = 0
     civar_count = 0
     dot_count = 0
@@ -83,4 +79,11 @@ while True:
         current_state = char_state_map[char]
         current_row += 1
 
-    print(final_str)
+    return final_str
+
+while True:
+    line = input('>> ').strip()
+    if line == ':quit':
+        break
+    
+    print(interpret_civar(line))
